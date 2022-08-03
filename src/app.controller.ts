@@ -2,27 +2,30 @@ import { Controller, Get, Render } from '@nestjs/common';
 
 @Controller()
 export class AppController {
+  // eslint-disable-next-line @typescript-eslint/no-empty-function
   constructor() {}
 
   @Get('/')
   @Render('index')
   index() {
+    const viewData = [];
+    viewData['title'] = 'Home Page - Online Store';
     return {
-      title: 'Home Page - Online Store',
+      viewData: viewData,
     };
   }
 
   @Get('/about')
   @Render('about')
   about() {
-    let viewData = [];
+    const viewData = [];
+    viewData['title'] = 'About us -Online Store';
+    viewData['subtitle'] = 'About us';
     viewData['description'] = 'This is an about page ...';
     viewData['author'] = 'Developed by: Angelino Valeta';
-    let title = 'About us -Online Store';
+
     return {
-      title: title,
-      subtitle: 'About us',
-      viewData: viewData,
+      viewData,
     };
   }
 }
